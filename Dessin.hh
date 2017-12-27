@@ -1,6 +1,9 @@
-#ifndef DESSIN_H
-#define DESSIN_H
+#ifndef DESSIN_HH
+#define DESSIN_HH
 #include <complex>
+
+#define HAUTEUR 600
+#define LARGEUR 600
 
 struct cadre {
     double x_min;
@@ -11,7 +14,7 @@ struct cadre {
 
 struct point {
     double x,y;
-    double r,v,b;
+    double rouge,vert,bleu;
 } typedef POINT;
 
 class Dessin {
@@ -21,6 +24,7 @@ class Dessin {
         complex<double> c;
         double module z_max;
     public:
+        void setCadre(double x_min, double x_max, double y_min, double x_max);
         POINT mondelbrot(double x, double y);
 };
 
