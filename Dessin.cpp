@@ -1,25 +1,18 @@
 #include "Dessin.hh"
+#include "Point.hh"
 
-void setCadre(double x_min, double x_max, double y_min, double x_max) {
-    this->cadre.x_min = x_min;
-    this->cadre.x_max = x_max;
-    this->cadre.y_min = y_min;
-    this->cadre.y_max = y_max;
+Dessin::Dessin() : z_max(0){
+    p = Point();
+    cadre.x_min = 0.0;
+    cadre.x_max = 0.0;
+    cadre.y_min = 0.0;
+    cadre.y_max = 0.0;
 }
 
-
-POINT Dessin::mondelbrot(double x, double y) {
-    int i=0;
-    POINT point;
-    do {
-        this->z = (this->z*this->z) + this->c;
-        i = i + 1;
-    }while(abs(this->z)<2 && i<50);
-    
-    if(i == 50) {
-               
-       point.x = x;
-       point.y = y;
-    }
-    return point;
+Dessin::~Dessin(){}
+void Dessin::setCadre(double x_min,double x_max, double y_min, double y_max){
+    cadre.x_min = x_min;
+    cadre.x_max = x_max;
+    cadre.y_min = y_min;
+    cadre.y_max = y_max;
 }
