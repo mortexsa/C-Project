@@ -20,9 +20,14 @@ protected:
     Point p;
 public:
     Dessin();
+    Dessin(double x_min,double x_max, double y_min, double y_max, double z_max);
     ~Dessin();
     void setCadre(double x_min,double x_max, double y_min, double y_max);
-    CADRE getCadre();
+    double getCadreXmin();
+    double getCadreXmax();
+    double getCadreYmin();
+    double getCadreYmax();
+
     void setModMax(double z_max);
     double getModMax();
 };
