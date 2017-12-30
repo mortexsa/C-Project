@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cairo.h>
+#include <cairo-svg.h>
 #include "Dessin.hh"
 #include "cairo.hh"
 #include <complex>
