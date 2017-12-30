@@ -30,7 +30,7 @@ public:
     Point getPoint();
     void setModMax(double z_max);
     double getModMax();
-    Point algoMandelbrot(double x, double y, double z_max, int n_max);
+    int algoMandelbrot(double x, double y, double z_max, int n_max);
     //virtual void dessiner(double height, double width)=0;
 };
 

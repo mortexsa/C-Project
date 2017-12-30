@@ -1,5 +1,6 @@
 #include "Dessin.hh"
-#include "Point.hh"
+
+using namespace std;
 
 Dessin::Dessin() : z_max(0){
     p = Point();
@@ -48,8 +49,7 @@ void Dessin::setModMax(double z_max){
 double Dessin::getModMax(){
     return z_max;
 }
-Point algoMandelbrot(double x, double y, double z_max, int n_max){
-    Point p;
+int Dessin::algoMandelbrot(double x, double y, double z_max, int n_max){
     int i = 0;
     complex<double> z(0.0,0.0);
     complex<double> c(x,y);
@@ -57,6 +57,5 @@ Point algoMandelbrot(double x, double y, double z_max, int n_max){
         z = (z*z) + c;
         i = i + 1;
     }while(abs(z)<z_max && i<n_max);
-    
-    return p;
+    return i;
 }
