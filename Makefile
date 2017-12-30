@@ -2,7 +2,7 @@ all: clean compil
 	./main
 
 compil:
-	g++ main.cpp -lGL -lGLU -lglut -o main
+	g++ main.cpp Dessin.cpp Point.cpp -o main
 
 clean:
 	rm -fr main 

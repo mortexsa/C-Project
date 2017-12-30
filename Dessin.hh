@@ -20,18 +20,19 @@ protected:
     Point p;
 public:
     Dessin();
-    Dessin(double x_min,double x_max, double y_min, double y_max, double z_max);
+    Dessin(const double x_min, const double x_max, const double y_min, const double y_max, const double z_max);
     ~Dessin();
-    void setCadre(double x_min,double x_max, double y_min, double y_max);
+    void setCadre(const double x_min, const double x_max, const double y_min, const double y_max);
     double getCadreXmin();
     double getCadreXmax();
     double getCadreYmin();
     double getCadreYmax();
     Point getPoint();
-    void setModMax(double z_max);
+    void setModMax(const double z_max);
     double getModMax();
-    int algoMandelbrot(double x, double y, double z_max, int n_max);
-    //virtual void dessiner(double height, double width)=0;
+    int algoMandelbrot(const double x, const double y, const double z_max, const int n_max);
+    int algoJuliaFatou(const double x,const double y,const double z_max,const int n_max,const std::complex<double> c);
+    virtual void dessiner(double height, double width)=0;
 };
 
 #endif

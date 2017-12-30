@@ -10,7 +10,7 @@ Dessin::Dessin() : z_max(0){
     cadre.y_max = 0.0;
 }
 
-Dessin::Dessin(double x_min,double x_max, double y_min, double y_max, double z_max){
+Dessin::Dessin(const double x_min, const double x_max, const double y_min, const double y_max, const double z_max){
     this->z_max = z_max;
     cadre.x_min = x_min;
     cadre.x_max = x_max;
@@ -20,7 +20,7 @@ Dessin::Dessin(double x_min,double x_max, double y_min, double y_max, double z_m
 
 Dessin::~Dessin(){}
 
-void Dessin::setCadre(double x_min,double x_max, double y_min, double y_max){
+void Dessin::setCadre(const double x_min, const double x_max, const double y_min, const double y_max){
     cadre.x_min = x_min;
     cadre.x_max = x_max;
     cadre.y_min = y_min;
@@ -42,17 +42,26 @@ double Dessin::getCadreYmax(){
 Point Dessin::getPoint(){
     return p;
 }
-void Dessin::setModMax(double z_max){
+void Dessin::setModMax(const double z_max){
     this->z_max = z_max;
 }
 
 double Dessin::getModMax(){
     return z_max;
 }
-int Dessin::algoMandelbrot(double x, double y, double z_max, int n_max){
+int Dessin::algoMandelbrot(const double x, const double y, const double z_max, const int n_max){
     int i = 0;
     complex<double> z(0.0,0.0);
     complex<double> c(x,y);
+    do {
+        z = (z*z) + c;
+        i = i + 1;
+    }while(abs(z)<z_max && i<n_max);
+    return i;
+}
+int Dessin::algoJuliaFatou(const double x,const double y,const double z_max,const int n_max,const complex<double> c){
+    int i = 0;
+    complex<double> z(x,y);
     do {
         z = (z*z) + c;
         i = i + 1;
