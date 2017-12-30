@@ -27,10 +27,11 @@ public:
     double getCadreXmax();
     double getCadreYmin();
     double getCadreYmax();
+    Point getPoint();
     void setModMax(double z_max);
     double getModMax();
-    Point algoMandelbrot();
-    virtual void dessiner(double height, double width)=0;
+    Point algoMandelbrot(double x, double y, double z_max, int n_max);
+    //virtual void dessiner(double height, double width)=0;
 };
 
 #endif

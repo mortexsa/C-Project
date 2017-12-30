@@ -20,8 +20,7 @@ public:
     double getr() const;
     double getg() const;
     double getb() const;
-    void setP(const double x, const double y);
-    void setColor(const double r, const double g, const double b);
+    Point& operator=(const Point& p);
 };
 
 

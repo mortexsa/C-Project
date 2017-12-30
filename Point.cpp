@@ -31,12 +31,10 @@ double Point::getg() const{
 double Point::getb() const{
     return couleur.b;
 }
-void Point::setP(const double x, const double y){
-    this->x = x;
-    this->y = y;
-}
-void Point::setColor(const double r, const double g, const double b){
-    couleur.r = r;
-    couleur.g = g;
-    couleur.b = b;
+Point& Point::operator=(const Point& p){
+    this->x = p.x;
+    this->y = p.y;
+    couleur.r = p.couleur.r;
+    couleur.g = p.couleur.g;
+    couleur.b = p.couleur.b;
 }
