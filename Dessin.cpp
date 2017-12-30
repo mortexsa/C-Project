@@ -3,7 +3,7 @@
 using namespace std;
 
 Dessin::Dessin() : z_max(0){
-    p = Point();
+    
     cadre.x_min = 0.0;
     cadre.x_max = 0.0;
     cadre.y_min = 0.0;
@@ -39,9 +39,11 @@ double Dessin::getCadreYmin(){
 double Dessin::getCadreYmax(){
     return cadre.y_max;
 }
-Point Dessin::getPoint(){
-    return p;
+
+double Dessin::getGranularite(){
+	return granularite;
 }
+
 void Dessin::setModMax(const double z_max){
     this->z_max = z_max;
 }
@@ -52,7 +54,7 @@ double Dessin::getModMax(){
 int Dessin::algoMandelbrot(const double x, const double y, const double z_max, const int n_max){
     int i = 0;
     complex<double> z(0.0,0.0);
-    complex<double> c(x,y);
+    complex<double> c(x*this->getGranularite()+this->getCadreXmin(),y*this->getGranularite()+this->getCadreYmin());
     do {
         z = (z*z) + c;
         i = i + 1;

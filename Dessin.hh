@@ -17,22 +17,25 @@ class Dessin {
 protected: 
     CADRE cadre;
     double z_max;
-    Point p;
+    double granularite;
+    
 public:
     Dessin();
-    Dessin(const double x_min, const double x_max, const double y_min, const double y_max, const double z_max);
+    Dessin(const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite);
     ~Dessin();
     void setCadre(const double x_min, const double x_max, const double y_min, const double y_max);
     double getCadreXmin();
     double getCadreXmax();
     double getCadreYmin();
     double getCadreYmax();
-    Point getPoint();
+    double getGranularite();
+    
     void setModMax(const double z_max);
     double getModMax();
     int algoMandelbrot(const double x, const double y, const double z_max, const int n_max);
     int algoJuliaFatou(const double x,const double y,const double z_max,const int n_max,const std::complex<double> c);
-    virtual void dessiner(double height, double width)=0;
+    virtual void dessiner_M(double x, double y, int i)=0;
+     virtual void dessiner_J(double x, double y, int i)=0;
 };
 
 #endif
