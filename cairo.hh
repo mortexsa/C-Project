@@ -6,13 +6,13 @@
 #include "Dessin.hh"
 #include <complex>
 
-class Cairo : public dessin{
+class Cairo : public Dessin {
 		public:
-		Cairo(const double x_min, const double x_max, const double y_min, const double y_max, const double z_max);
+		Cairo(const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite);
 		void dessiner_M();
 		void dessiner_J(std::complex<double> c);
 		~Cairo();
-}
+};
 
 
 

@@ -10,12 +10,13 @@ Dessin::Dessin() : z_max(0){
     cadre.y_max = 0.0;
 }
 
-Dessin::Dessin(const double x_min, const double x_max, const double y_min, const double y_max, const double z_max){
+Dessin::Dessin(const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite){
     this->z_max = z_max;
     cadre.x_min = x_min;
     cadre.x_max = x_max;
     cadre.y_min = y_min;
     cadre.y_max = y_max;
+    this->granularite=granularite;
 }
 
 Dessin::~Dessin(){}
