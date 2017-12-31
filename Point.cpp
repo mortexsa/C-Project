@@ -37,4 +37,5 @@ Point& Point::operator=(const Point& p){
     couleur.r = p.couleur.r;
     couleur.g = p.couleur.g;
     couleur.b = p.couleur.b;
+    return *this;
 }
