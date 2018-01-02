@@ -1,10 +1,10 @@
 #include "opengl.h"
 
 
-Opengl::Opengl(QWidget *parent) 
-    : GLWidget(1, parent, "fractal")
-{
-}
+Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite)
+	   : GLWidget(1, parent, "fractal"), Dessin(x_min, x_max, y_min, y_max,  z_max, granularite){};
+   
+
 
 void Opengl::initializeGL()
 {
@@ -33,13 +33,15 @@ void Opengl::paintGL()
     //code de dessin 
 }
 
-//~ void Opengl::dessiner_M
-//~ {
-	//~ }
+void Opengl::dessiner_M()
+{
+	
+	};
 
-//~ void Opengl::dessiner_J
-//~ {
-	//~ }
+void Opengl::dessiner_J(std::complex<double> c)
+{
+	
+	};
 
 
 
