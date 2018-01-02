@@ -13,8 +13,8 @@ public:
     void initializeGL();
     void resizeGL(int width, int height);
     void paintGL();
-    void dessiner_J(std::complex<double> c);
-    void dessiner_M();
+    //~ void dessiner_J(std::complex<double> c);
+    //~ void dessiner_M();
 };
 
 #endif

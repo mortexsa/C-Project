@@ -23,7 +23,7 @@ void Opengl::resizeGL(int width, int height)
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45.0f, (GLfloat)width/(GLfloat)height, 0.1f, 100.0f);
+    //~ gluPerspective(45.0f, (GLfloat)width/(GLfloat)height, 0.1f, 100.0f);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
@@ -33,11 +33,13 @@ void Opengl::paintGL()
     //code de dessin 
 }
 
-void Opengl::dessiner_M
-{}
+//~ void Opengl::dessiner_M
+//~ {
+	//~ }
 
-void Opengl::dessiner_J
-{}
+//~ void Opengl::dessiner_J
+//~ {
+	//~ }
 
 
 
