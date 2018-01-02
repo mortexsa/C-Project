@@ -1,7 +1,7 @@
 #ifndef OPENGL_H
 #define OPENGL_H
 
-#include "glWidget.h"
+#include <glWidget.h>
 #include "Dessin.hh"
 #include <complex>
 

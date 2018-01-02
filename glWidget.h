@@ -3,7 +3,7 @@
 
 #include <QtOpenGL>
 #include <QGLWidget>
-#include "dessin.h"
+#include "Dessin.hh"
 
 class GLWidget : public QGLWidget
 {

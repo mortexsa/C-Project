@@ -1,11 +1,12 @@
 #include "opengl.h"
 
-myWindow::myWindow(QWidget *parent) 
+
+Opengl::Opengl(QWidget *parent) 
     : myGLWidget(1, parent, "fractal")
 {
 }
 
-void opengl::initializeGL()
+void Opengl::initializeGL()
 {
     glShadeModel(GL_SMOOTH);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -15,7 +16,7 @@ void opengl::initializeGL()
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
 
-void opengl::resizeGL(int width, int height)
+void Opengl::resizeGL(int width, int height)
 {
     if(height == 0)
         height = 1;
@@ -27,15 +28,15 @@ void opengl::resizeGL(int width, int height)
     glLoadIdentity();
 }
 
-void opengl::paintGL()
+void Opengl::paintGL()
 {
     //code de dessin 
 }
 
-void opengl::dessiner_M
+void Opengl::dessiner_M
 {}
 
-void opengl::dessiner_J
+void Opengl::dessiner_J
 {}
 
 

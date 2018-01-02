@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cairo.h>
+#include <cairo.hh>
 #include <cairo-svg.h>
 #include "Dessin.hh"
 #include "cairo.hh"
