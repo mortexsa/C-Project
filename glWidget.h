@@ -5,7 +5,7 @@
 #include <QGLWidget>
 #include "dessin.h"
 
-class GLWidget : public QGLWidget, public dessin 
+class GLWidget : public QGLWidget
 {
     Q_OBJECT	
 public:

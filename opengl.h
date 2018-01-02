@@ -3,7 +3,7 @@
 
 #include "glWidget.h"
 
-class Fenetre : public GLWidget
+class Fenetre : public GLWidget,public dessin 
 {
     Q_OBJECT
 public:
