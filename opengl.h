@@ -9,7 +9,7 @@ class Opengl : public GLWidget, public Dessin
 {
     Q_OBJECT
 public:
-    explicit myWindow(QWidget *parent = 0);
+    explicit Opengl(QWidget *parent = 0);
     void initializeGL();
     void resizeGL(int width, int height);
     void paintGL();

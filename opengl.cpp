@@ -2,7 +2,7 @@
 
 
 Opengl::Opengl(QWidget *parent) 
-    : myGLWidget(1, parent, "fractal")
+    : GLWidget(1, parent, "fractal")
 {
 }
 
