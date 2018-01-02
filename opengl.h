@@ -1,9 +1,11 @@
-#ifndef FENETRE_H
-#define FENETRE_H
+#ifndef OPENGL_H
+#define OPENGL_H
 
 #include "glWidget.h"
+#include "Dessin.hh"
+#include <complex>
 
-class Fenetre : public GLWidget,public dessin 
+class Opengl : public GLWidget, public Dessin  
 {
     Q_OBJECT
 public:
@@ -11,6 +13,8 @@ public:
     void initializeGL();
     void resizeGL(int width, int height);
     void paintGL();
+    void dessiner_J(std::complex<double> c);
+    void dessiner_M();
 };
 
 #endif

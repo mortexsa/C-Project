@@ -1,11 +1,11 @@
-#include "fenetre.h"
+#include "opengl.h"
 
 myWindow::myWindow(QWidget *parent) 
-    : myGLWidget(60, parent, "Premier Polygone avec OpenGL et Qt")
+    : myGLWidget(1, parent, "fractal")
 {
 }
 
-void myWindow::initializeGL()
+void opengl::initializeGL()
 {
     glShadeModel(GL_SMOOTH);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -15,7 +15,7 @@ void myWindow::initializeGL()
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
 
-void myWindow::resizeGL(int width, int height)
+void opengl::resizeGL(int width, int height)
 {
     if(height == 0)
         height = 1;
@@ -27,24 +27,17 @@ void myWindow::resizeGL(int width, int height)
     glLoadIdentity();
 }
 
-void myWindow::paintGL()
+void opengl::paintGL()
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-    glTranslatef(-1.5f, 0.0f, -6.0f);
-
-    glBegin(GL_TRIANGLES);
-        glVertex3f(0.0f, 1.0f, 0.0f);
-        glVertex3f(-1.0f, -1.0f, 0.0f);
-        glVertex3f(1.0f, -1.0f, 0.0f);
-    glEnd();
-
-    glTranslatef(3.0f, 0.0f, -6.0f);
-
-    glBegin(GL_QUADS);
-        glVertex3f(-1.0f, 1.0f, 0.0f);
-        glVertex3f(-1.0f, -1.0f, 0.0f);
-        glVertex3f(1.0f, -1.0f, 0.0f);
-        glVertex3d(1.0f, 1.0f, 0.0f);
-    glEnd();
+    //code de dessin 
 }
+
+void opengl::dessiner_M
+{}
+
+void opengl::dessiner_J
+{}
+
+
+
+
