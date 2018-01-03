@@ -34,21 +34,20 @@ void Opengl::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    //code de dessin 	
-    double x,y;
-    std::cout<<"mandelbrot i:"<<algoMandelbrot(0.0,0.0,this->getModMax(),100)<<std::endl;
-	for(x=this->getCadreXmin(); x<this->getCadreXmax(); x+=this->getGranularite()){
-		for(y=this->getCadreYmin(); y<this->getCadreYmax(); y+=this->getGranularite()){
+    //code de dessin 
+    int x;
+	int y;
+	int imagex=(this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
+	int imagey=(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();	
+	for(x=0; x<imagex; x+=1){
+		for(y=0; y<imagey; y+=1){
 			int i=this->algoMandelbrot(x,y,this->getModMax(),100);
-            //std::cout<<"[x:"<<x<<";y:"<<y<<"]"<<std::endl;
             glBegin(GL_POINTS);
-            glColor3d(0.5,0.5,0.5);
-            glVertex2d(x,y);
+            glColor3f(0.0f,0.0f,i/100.0);
+            glVertex2f((x-imagex/2.0)/(imagex/2.0),(y-imagey/2.0)/(imagey/2.0));
             glEnd();
-            glFlush();
 		}		
 	}
-
 }
 
 void Opengl::dessiner_M()
