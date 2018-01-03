@@ -4,6 +4,7 @@
 #include <glWidget.h>
 #include "Dessin.hh"
 #include <complex>
+#include <iostream>
 
 class Opengl : public GLWidget, public Dessin 
 {
