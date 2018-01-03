@@ -1,10 +1,10 @@
 #include "opengl.h"
+#include <GL/glut.h>
 
 
 Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite)
 	   : GLWidget(1, parent, "fractal"), Dessin(x_min, x_max, y_min, y_max,  z_max, granularite){};
    
-
 
 void Opengl::initializeGL()
 {
@@ -28,20 +28,37 @@ void Opengl::resizeGL(int width, int height)
     glLoadIdentity();
 }
 
+
+
 void Opengl::paintGL()
 {
-    //code de dessin 
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+    //code de dessin 	
+    GLdouble x,y;
+	for(x=this->getCadreXmin(); x<this->getCadreXmax(); x+=this->getGranularite()){
+		for(y=this->getCadreYmin(); y<this->getCadreYmax(); y+=this->getGranularite()){
+			int i=this->algoMandelbrot(x,y,this->getModMax(),100);
+            if(i == 100){
+                glBegin(GL_POINTS);
+                glColor3d(0.5,0.5,0.5);
+                glVertex2d(x,y);
+                glEnd();
+            }
+		}		
+	}
 }
 
 void Opengl::dessiner_M()
 {
 	
-	};
+};
 
 void Opengl::dessiner_J(std::complex<double> c)
 {
 	
-	};
+};
+
 
 
 

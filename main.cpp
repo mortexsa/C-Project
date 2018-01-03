@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
 	    QApplication app(argc, argv);
 	    Opengl test(0,-2.6,2.6,-2,2,2,0.01); //Ajout de notre classe myWindow
 	    test.show();   //Exécution de notre fenêtre de rendu OpenGL
+		test.setFixedSize((2.6+2.6)/0.01,(2.0+2.0)/0.01);
 	    return app.exec();
 	}
 
