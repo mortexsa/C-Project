@@ -64,7 +64,7 @@ int Dessin::algoMandelbrot(const double x, const double y, const double z_max, c
 }
 int Dessin::algoJuliaFatou(const double x,const double y,const double z_max,const int n_max,const complex<double> c){
     int i = 0;
-    complex<double> z(x,y);
+    complex<double> z(x*this->getGranularite()+this->getCadreXmin(),y*this->getGranularite()+this->getCadreYmin());
     do {
         z = (z*z) + c;
         i = i + 1;

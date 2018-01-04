@@ -1,4 +1,5 @@
 #include "glWidget.h"
+#include <string.h>
 
 GLWidget::GLWidget(int framesPerSecond, QWidget *parent, char *name) 
     : QGLWidget(parent)

@@ -12,6 +12,7 @@ class Opengl : public GLWidget, public Dessin
     
 public:
     Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite);
+    void addPoint(double x, double y, double r, double g, double b);
     void initializeGL();
     void resizeGL(int width, int height);
     void paintGL();

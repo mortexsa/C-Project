@@ -5,6 +5,12 @@
 Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite)
 	   : GLWidget(1, parent, "fractal"), Dessin(x_min, x_max, y_min, y_max,  z_max, granularite){};
    
+void Opengl::addPoint(double x, double y, double r, double g, double b){
+    glBegin(GL_POINTS);
+    glColor3d(r,g,b);
+    glVertex2d(x,y);
+    glEnd();
+}
 
 void Opengl::initializeGL()
 {
@@ -32,9 +38,14 @@ void Opengl::resizeGL(int width, int height)
 
 void Opengl::paintGL()
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    dessiner_M();
+}
+
+void Opengl::dessiner_M()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    //code de dessin 
+    std::complex<double> c(-0.0519,0.688);
     int x;
 	int y;
 	int imagex=(this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
@@ -42,22 +53,25 @@ void Opengl::paintGL()
 	for(x=0; x<imagex; x+=1){
 		for(y=0; y<imagey; y+=1){
 			int i=this->algoMandelbrot(x,y,this->getModMax(),100);
-            glBegin(GL_POINTS);
-            glColor3f(0.0f,0.0f,i/100.0);
-            glVertex2f((x-imagex/2.0)/(imagex/2.0),(y-imagey/2.0)/(imagey/2.0));
-            glEnd();
+            addPoint((x-imagex/2.0)/(imagex/2.0),(y-imagey/2.0)/(imagey/2.0),0.0,i/100.0,i/100.0);
 		}		
 	}
-}
-
-void Opengl::dessiner_M()
-{
-	
 };
 
 void Opengl::dessiner_J(std::complex<double> c)
 {
-	
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+    int x;
+	int y;
+	int imagex=(this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
+	int imagey=(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();	
+	for(x=0; x<imagex; x+=1){
+		for(y=0; y<imagey; y+=1){
+			int i=this->algoJuliaFatou(x,y,this->getModMax(),100,c);
+            addPoint((x-imagex/2.0)/(imagex/2.0),(y-imagey/2.0)/(imagey/2.0),0.0,i/100.0,i/100.0);
+		}		
+	}
 };
 
 
