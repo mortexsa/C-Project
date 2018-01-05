@@ -5,6 +5,10 @@
 #include "Dessin.hh"
 #include <complex>
 #include <iostream>
+#include <QApplication>
+#include <QWidget>
+#include <QPushButton>
+#include <QMessageBox>
 
 class Opengl : public GLWidget, public Dessin 
 {
@@ -18,6 +22,10 @@ public:
     void paintGL();
     void dessiner_J(std::complex<double> c);
     void dessiner_M();
+    
+    
+public slots:
+	void ouvrirDialogue();
 };
 
 #endif
