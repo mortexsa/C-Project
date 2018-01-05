@@ -20,6 +20,17 @@ class Opengl : public GLWidget, public Dessin
     QDoubleSpinBox *zmax;
     QDoubleSpinBox *granularite2;
     
+    QDoubleSpinBox *C_r;
+    QDoubleSpinBox *C_i;
+    QPushButton *J;
+    QpushButton *M;
+    QPushButton *save;
+    
+    
+    bool J_M;
+    complex<double> c;
+    
+    
     
 public:
     Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite);
