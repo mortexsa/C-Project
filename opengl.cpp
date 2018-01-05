@@ -3,7 +3,62 @@
 
 
 Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite)
-	   : GLWidget(1, parent, "fractal"), Dessin(x_min, x_max, y_min, y_max,  z_max, granularite){};
+	   : GLWidget(1, parent, "fractal"), Dessin(x_min, x_max, y_min, y_max,  z_max, granularite){
+		QLabel *xminLabel= new QLabel("xmin xmax ymin ymax zmax granularite",this);
+		xminLabel->move(0,0);
+		this->xmin= new QDoubleSpinBox(this);
+		this->xmin->setRange(-10, 10);
+		this->xmin->setSingleStep(0.01);
+        this->xmin->setValue(0);
+        this->xmin->move(0,17);
+        
+      
+		this->xmax= new QDoubleSpinBox(this);
+		this->xmax->setRange(-10, 10);
+		this->xmax->setSingleStep(0.01);
+        this->xmax->setValue(0);
+        this->xmax->move(72,17);
+        
+     
+		this->ymin= new QDoubleSpinBox(this);
+		this->ymin->setRange(-10, 10);
+		this->ymin->setSingleStep(0.01);
+        this->ymin->setValue(0);
+        this->ymin->move(144,17);
+        
+   
+		this->ymax= new QDoubleSpinBox(this);
+		this->ymax->setRange(-10, 10);
+		this->ymax->setSingleStep(0.01);
+        this->ymax->setValue(0);
+        this->ymax->move(216,17);
+           
+           
+           
+    
+		this->zmax= new QDoubleSpinBox(this);
+		this->zmax->setRange(-10, 10);
+		this->zmax->setSingleStep(0.01);
+        this->zmax->setValue(0);
+        this->zmax->move(288,17);
+     
+		this->granularite2= new QDoubleSpinBox(this);
+		this->granularite2->setRange(-10, 10);
+		this->granularite2->setSingleStep(0.001);
+        this->granularite2->setValue(0);
+        this->granularite2->move(360,17);   
+           
+         QObject::connect(this->xmin, SIGNAL(valueChanged(double)),this, SLOT(changerXmin(double)));
+		 std::cout<<this->cadre.x_min; 
+		   	//~ bool ok=false;
+	
+	//~ this->xmin=QInputDialog::getDouble(this,"param","cadre xmin",0,-5,5,4, &ok);
+	//~ this->xmax=QInputDialog::getDouble(this,"param","cadre xmax",0,-5,5,4, &ok);
+	//~ this->ymin=QInputDialog::getDouble(this,"param","cadre ymin",0,-5,5,4, &ok);
+	//~ this->ymax=QInputDialog::getDouble(this,"param","cadre ymax",0,-5,5,4, &ok);
+	//~ this->zmax=QInputDialog::getDouble(this,"param","cadre zmax",0,-5,5,4, &ok);
+	//~ this->granularite2=QInputDialog::getDouble(this,"param","granularite",0.01,0.01,0.1,4, &ok);
+		   };
    
 void Opengl::addPoint(double x, double y, double r, double g, double b){
     glBegin(GL_POINTS);
@@ -77,17 +132,47 @@ void Opengl::dessiner_J(std::complex<double> c)
 	}
 };
 
-void Opengl::ouvrirDialogue(){
-	bool ok=false;
-	this->cadre.x_min=QInputDialog::getDouble(this,"param","cadre xmin",0,-5,5,4, &ok);
-	this->cadre.x_max=QInputDialog::getDouble(this,"param","cadre xmax",0,-5,5,4, &ok);
-	this->cadre.y_min=QInputDialog::getDouble(this,"param","cadre ymin",0,-5,5,4, &ok);
-	this->cadre.y_max=QInputDialog::getDouble(this,"param","cadre ymax",0,-5,5,4, &ok);
-	this->z_max=QInputDialog::getDouble(this,"param","cadre zmax",0,-5,5,4, &ok);
-	this->granularite=QInputDialog::getDouble(this,"param","granularite",0.01,0.01,0.1,4, &ok);
+//~ void Opengl::ouvrirDialogue(){
+	//~ bool ok=false;
+	//~ this->cadre.x_min=QInputDialog::getDouble(this,"param","cadre xmin",0,-5,5,4, &ok);
+	//~ this->cadre.x_max=QInputDialog::getDouble(this,"param","cadre xmax",0,-5,5,4, &ok);
+	//~ this->cadre.y_min=QInputDialog::getDouble(this,"param","cadre ymin",0,-5,5,4, &ok);
+	//~ this->cadre.y_max=QInputDialog::getDouble(this,"param","cadre ymax",0,-5,5,4, &ok);
+	//~ this->z_max=QInputDialog::getDouble(this,"param","cadre zmax",0,-5,5,4, &ok);
+	//~ this->granularite=QInputDialog::getDouble(this,"param","granularite",0.01,0.01,0.1,4, &ok);
 	
 	
-};
+//~ };
 
+
+void Opengl::changerXmin(double n){
+	this->cadre.x_min=n;
+	this->updateGL();
+	};
+	
+void Opengl::changerXmax(double n){
+	this->cadre.x_max=n;
+	this->updateGL();
+	};
+	
+void Opengl::changerYmin(double n){
+	this->cadre.y_min=n;
+	this->updateGL();
+	};
+
+void Opengl::changerYmax(double n){
+	this->cadre.y_max=n;
+	this->updateGL();
+	};
+
+void Opengl::changerZmax(double n){
+	this->z_max=n;
+	this->updateGL();
+	};
+
+void Opengl::changerGran(double n){
+	this->granularite=n;
+	this->updateGL();
+	};
 
 

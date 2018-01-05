@@ -12,7 +12,14 @@
 
 class Opengl : public GLWidget, public Dessin 
 {
-    Q_OBJECT
+    Q_OBJECT;
+    QDoubleSpinBox *xmin;
+    QDoubleSpinBox *xmax;
+    QDoubleSpinBox *ymin;
+    QDoubleSpinBox *ymax;
+    QDoubleSpinBox *zmax;
+    QDoubleSpinBox *granularite2;
+    
     
 public:
     Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite);
@@ -25,7 +32,12 @@ public:
     
     
 public slots:
-	void ouvrirDialogue();
+	void changerXmin(double n);
+	void changerXmax(double n);
+	void changerYmin(double n);
+	void changerYmax(double n);
+	void changerZmax(double n);
+	void changerGran(double n);
 };
 
 #endif

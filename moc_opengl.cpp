@@ -22,7 +22,7 @@ static const uint qt_meta_data_Opengl[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -30,13 +30,21 @@ static const uint qt_meta_data_Opengl[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-       8,    7,    7,    7, 0x0a,
+      10,    8,    7,    7, 0x0a,
+      30,    8,    7,    7, 0x0a,
+      50,    8,    7,    7, 0x0a,
+      70,    8,    7,    7, 0x0a,
+      90,    8,    7,    7, 0x0a,
+     110,    8,    7,    7, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Opengl[] = {
-    "Opengl\0\0ouvrirDialogue()\0"
+    "Opengl\0\0n\0changerXmin(double)\0"
+    "changerXmax(double)\0changerYmin(double)\0"
+    "changerYmax(double)\0changerZmax(double)\0"
+    "changerGran(double)\0"
 };
 
 void Opengl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -45,11 +53,15 @@ void Opengl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Q_ASSERT(staticMetaObject.cast(_o));
         Opengl *_t = static_cast<Opengl *>(_o);
         switch (_id) {
-        case 0: _t->ouvrirDialogue(); break;
+        case 0: _t->changerXmin((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 1: _t->changerXmax((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 2: _t->changerYmin((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 3: _t->changerYmax((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 4: _t->changerZmax((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 5: _t->changerGran((*reinterpret_cast< double(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData Opengl::staticMetaObjectExtraData = {
@@ -86,9 +98,9 @@ int Opengl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 6;
     }
     return _id;
 }

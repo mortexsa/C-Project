@@ -7,6 +7,7 @@ TARGET =
 DEPENDPATH += 
 INCLUDEPATH += .
 QT += opengl
+QT += widgets
 
 CONFIG +=link_pkgconfig
 PKGCONFIG += gtk+-2.0
