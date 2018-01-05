@@ -8,29 +8,29 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 		xminLabel->move(0,0);
 		this->xmin= new QDoubleSpinBox(this);
 		this->xmin->setRange(-10, 10);
-		this->xmin->setSingleStep(0.01);
-        this->xmin->setValue(0);
+		this->xmin->setSingleStep(0.1);
+        this->xmin->setValue(-2);
         this->xmin->move(0,17);
         
       
 		this->xmax= new QDoubleSpinBox(this);
 		this->xmax->setRange(-10, 10);
-		this->xmax->setSingleStep(0.01);
-        this->xmax->setValue(0);
+		this->xmax->setSingleStep(0.1);
+        this->xmax->setValue(2);
         this->xmax->move(72,17);
         
      
 		this->ymin= new QDoubleSpinBox(this);
 		this->ymin->setRange(-10, 10);
-		this->ymin->setSingleStep(0.01);
-        this->ymin->setValue(0);
+		this->ymin->setSingleStep(0.1);
+        this->ymin->setValue(-2);
         this->ymin->move(144,17);
         
    
 		this->ymax= new QDoubleSpinBox(this);
 		this->ymax->setRange(-10, 10);
-		this->ymax->setSingleStep(0.01);
-        this->ymax->setValue(0);
+		this->ymax->setSingleStep(0.1);
+        this->ymax->setValue(2);
         this->ymax->move(216,17);
            
            
@@ -38,18 +38,24 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
     
 		this->zmax= new QDoubleSpinBox(this);
 		this->zmax->setRange(-10, 10);
-		this->zmax->setSingleStep(0.01);
-        this->zmax->setValue(0);
+		this->zmax->setSingleStep(0.1);
+        this->zmax->setValue(2);
         this->zmax->move(288,17);
      
 		this->granularite2= new QDoubleSpinBox(this);
 		this->granularite2->setRange(-10, 10);
+		this->granularite2->setDecimals(3);
 		this->granularite2->setSingleStep(0.001);
-        this->granularite2->setValue(0);
+        this->granularite2->setValue(0.001);
         this->granularite2->move(360,17);   
            
          QObject::connect(this->xmin, SIGNAL(valueChanged(double)),this, SLOT(changerXmin(double)));
-		 std::cout<<this->cadre.x_min; 
+         QObject::connect(this->xmax, SIGNAL(valueChanged(double)),this, SLOT(changerXmax(double)));
+         QObject::connect(this->ymin, SIGNAL(valueChanged(double)),this, SLOT(changerYmin(double)));
+         QObject::connect(this->ymax, SIGNAL(valueChanged(double)),this, SLOT(changerYmax(double)));
+         QObject::connect(this->zmax, SIGNAL(valueChanged(double)),this, SLOT(changerZmax(double)));
+         QObject::connect(this->granularite2, SIGNAL(valueChanged(double)),this, SLOT(changerGran(double)));
+		  
 		   	//~ bool ok=false;
 	
 	//~ this->xmin=QInputDialog::getDouble(this,"param","cadre xmin",0,-5,5,4, &ok);
