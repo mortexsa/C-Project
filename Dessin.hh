@@ -32,8 +32,8 @@ public:
     
     void setModMax(const double z_max);
     double getModMax();
-    int algoMandelbrot(const double x, const double y, const double z_max, const int n_max);
-    int algoJuliaFatou(const double x,const double y,const double z_max,const int n_max,const std::complex<double> c);
+    Point algoMandelbrot(const double x, const double y, const double z_max, const int n_max);
+    Point algoJuliaFatou(const double x,const double y,const double z_max,const int n_max,const std::complex<double> c);
     virtual void dessiner_M()=0;
      virtual void dessiner_J(std::complex<double> c)=0;
 };

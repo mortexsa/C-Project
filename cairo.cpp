@@ -19,9 +19,8 @@ void Cairo::dessiner_M(){
 	cairo_set_source_rgb(cr, 0, 0, 0);
 	for(x=0; x<imagex; x+=1){
 		for(y=0; y<imagey; y+=1){
-			int i=this->algoMandelbrot(x,y,this->getModMax(),100);
-
-			cairo_set_source_rgb(cr, 0.0, i/100.0, i/100.0);
+			Point p = this->algoMandelbrot(x,y,this->getModMax(),100);
+			cairo_set_source_rgb(cr, p.getr(), p.getg(), p.getb());
 			cairo_arc(cr,x,y,1,0,2*M_PI);
 			cairo_fill (cr);
 		}		
@@ -50,8 +49,8 @@ void Cairo::dessiner_J(std::complex<double> c){
 	cairo_set_source_rgb(cr, 0, 0, 0);
     for(x=0; x<imagex; x+=1){
 		for(y=0; y<imagey; y+=1){
-			int i=this->algoJuliaFatou(x,y,this->getModMax(),100,c);
-				cairo_set_source_rgb(cr, 0, 0, i/100.0);
+			Point p = this->algoJuliaFatou(x,y,this->getModMax(),100,c);
+				cairo_set_source_rgb(cr, p.getr(), p.getg(), p.getb());
 				cairo_rectangle(cr,x,y,1,1);
 				cairo_fill (cr);
 			}		

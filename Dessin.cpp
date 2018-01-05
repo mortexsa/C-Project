@@ -52,22 +52,36 @@ void Dessin::setModMax(const double z_max){
 double Dessin::getModMax(){
     return z_max;
 }
-int Dessin::algoMandelbrot(const double x, const double y, const double z_max, const int n_max){
+Point Dessin::algoMandelbrot(const double x, const double y, const double z_max, const int n_max){
     int i = 0;
+    Point p;
     complex<double> z(0.0,0.0);
     complex<double> c(x*this->getGranularite()+this->getCadreXmin(),y*this->getGranularite()+this->getCadreYmin());
     do {
         z = (z*z) + c;
         i = i + 1;
     }while(abs(z)<z_max && i<n_max);
-    return i;
+    if(abs(z)<=2){
+        p = Point(x,y,abs(z)/2.0,abs(z)/2.0,i/100.0);
+    }
+    else{
+        p = Point(x,y,i/100.0,i/100.0,i/100.0);
+    }    
+    return p;
 }
-int Dessin::algoJuliaFatou(const double x,const double y,const double z_max,const int n_max,const complex<double> c){
+Point Dessin::algoJuliaFatou(const double x,const double y,const double z_max,const int n_max,const complex<double> c){
     int i = 0;
+    Point p;
     complex<double> z(x*this->getGranularite()+this->getCadreXmin(),y*this->getGranularite()+this->getCadreYmin());
     do {
         z = (z*z) + c;
         i = i + 1;
     }while(abs(z)<z_max && i<n_max);
-    return i;
+     if(abs(z)<=2){
+        p = Point(x,y,abs(z)/2.0,abs(z)/2.0,i/100.0);
+    }
+    else{
+        p = Point(x,y,i/100.0,i/100.0,i/100.0);
+    }    
+    return p;
 }

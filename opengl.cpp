@@ -38,22 +38,24 @@ void Opengl::resizeGL(int width, int height)
 
 void Opengl::paintGL()
 {
-    dessiner_M();
+    std::complex<double> c(-0.0519,0.688);
+    dessiner_J(c);
+    //dessiner_M();
 }
 
 void Opengl::dessiner_M()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    std::complex<double> c(-0.0519,0.688);
+    
     int x;
 	int y;
 	int imagex=(this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
 	int imagey=(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();	
 	for(x=0; x<imagex; x+=1){
 		for(y=0; y<imagey; y+=1){
-			int i=this->algoMandelbrot(x,y,this->getModMax(),100);
-            addPoint((x-imagex/2.0)/(imagex/2.0),(y-imagey/2.0)/(imagey/2.0),0.0,i/100.0,i/100.0);
+			Point p = this->algoMandelbrot(x,y,this->getModMax(),100);
+            addPoint((p.getPx()-imagex/2.0)/(imagex/2.0),(p.getPy()-imagey/2.0)/(imagey/2.0),p.getr(),p.getg(),p.getb());
 		}		
 	}
 };
@@ -68,8 +70,8 @@ void Opengl::dessiner_J(std::complex<double> c)
 	int imagey=(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();	
 	for(x=0; x<imagex; x+=1){
 		for(y=0; y<imagey; y+=1){
-			int i=this->algoJuliaFatou(x,y,this->getModMax(),100,c);
-            addPoint((x-imagex/2.0)/(imagex/2.0),(y-imagey/2.0)/(imagey/2.0),0.0,i/100.0,i/100.0);
+			Point p=this->algoJuliaFatou(x,y,this->getModMax(),100,c);
+            addPoint((p.getPx()-imagex/2.0)/(imagex/2.0),(p.getPy()-imagey/2.0)/(imagey/2.0),p.getr(),p.getg(),p.getb());
 		}		
 	}
 };
