@@ -208,6 +208,9 @@ void Opengl::changerXmin(double n){
 		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
 			this->cadre.x_min=n;
 		}
+		else {
+			std::cout<<"Les dimention ne convienne pas , veuillez changer les parametres"<<std::endl;
+		}
 	}	
 };
 	
@@ -217,6 +220,9 @@ void Opengl::changerXmax(double n){
 		int hauteur = (this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
 		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
 			this->cadre.x_max=n;
+		}
+		else {
+			std::cout<<"Les dimention ne convienne pas , veuillez changer les parametres"<<std::endl;
 		}
 	}
 };
@@ -228,6 +234,9 @@ void Opengl::changerYmin(double n){
 		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
 			this->cadre.y_min=n;
 		}
+		else {
+			std::cout<<"Les dimention ne convienne pas , veuillez changer les parametres"<<std::endl;
+		}
 	}
 };
 
@@ -237,6 +246,9 @@ void Opengl::changerYmax(double n){
 		int hauteur = (n-this->getCadreYmin())/this->getGranularite();
 		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
 			this->cadre.y_max=n;
+		}
+		else {
+			std::cout<<"Les dimention ne convienne pas , veuillez changer les parametres"<<std::endl;
 		}
 	}
 };
@@ -252,6 +264,9 @@ void Opengl::changerGran(double n){
 		int hauteur = (this->getCadreYmax()-this->getCadreYmin())/n;
 		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
 			this->granularite=n;
+		}
+		else {
+			std::cout<<"Les dimention ne convienne pas , veuillez changer les parametres"<<std::endl;
 		}
 	}
 };
