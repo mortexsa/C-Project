@@ -2,6 +2,12 @@
 #include "cairo.hh"
 #include <GL/glut.h>
 
+//MIN ET MAX hauteur et largeur 
+#define MIN_HAUTEUR 200
+#define MIN_LARGEUR 200
+#define MAX_HAUTEUR 700
+#define MAX_LARGEUR 1024
+
 
 Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite)
 	   : GLWidget(1, parent, "fractal"), Dessin(x_min, x_max, y_min, y_max,  z_max, granularite){
@@ -196,24 +202,44 @@ void Opengl::dessiner_J(std::complex<double> c)
 
 
 void Opengl::changerXmin(double n){
-	this->cadre.x_min=n;
-	
-	};
+	if(n != 0) {
+		int largeur = (this->getCadreXmin()-n)/this->getGranularite();
+		int hauteur = (this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
+		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
+			this->cadre.x_min=n;
+		}
+	}	
+};
 	
 void Opengl::changerXmax(double n){
-	this->cadre.x_max=n;
-	
-	};
+	if(n != 0) {
+		int largeur = (n-this->getCadreXmin())/this->getGranularite();
+		int hauteur = (this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
+		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
+			this->cadre.x_max=n;
+		}
+	}
+};
 	
 void Opengl::changerYmin(double n){
-	this->cadre.y_min=n;
-	
-	};
+	if(n != 0) {
+		int largeur = (this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
+		int hauteur = (this->getCadreYmax()-n)/this->getGranularite();
+		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
+			this->cadre.y_min=n;
+		}
+	}
+};
 
 void Opengl::changerYmax(double n){
-	this->cadre.y_max=n;
-	
-	};
+	if(n != 0) {
+		int largeur = (this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
+		int hauteur = (n-this->getCadreYmin())/this->getGranularite();
+		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
+			this->cadre.y_max=n;
+		}
+	}
+};
 
 void Opengl::changerZmax(double n){
 	this->z_max=n;
@@ -221,9 +247,14 @@ void Opengl::changerZmax(double n){
 	};
 
 void Opengl::changerGran(double n){
-	this->granularite=n;
-	
-	};
+	if(n != 0) {
+		int largeur = (this->getCadreXmax()-this->getCadreXmin())/n;
+		int hauteur = (this->getCadreYmax()-this->getCadreYmin())/n;
+		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
+			this->granularite=n;
+		}
+	}
+};
 
 void Opengl::refresh(){
 	this->updateGL();
