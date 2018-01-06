@@ -77,6 +77,8 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	QObject::connect(this->mandelbrot, SIGNAL(clicked()), this, SLOT(mandelbrot1()));
 	QObject::connect(this->juliaFatou1, SIGNAL(clicked()), this, SLOT(juliafatou1()));
 	QObject::connect(this->juliaFatou2, SIGNAL(clicked()), this, SLOT(juliafatou2()));  
+	this->updateGL();
+
 	//~ bool ok=false;
 
 	//~ this->xmin=QInputDialog::getDouble(this,"param","cadre xmin",0,-5,5,4, &ok);
@@ -234,7 +236,6 @@ void Opengl::enregistrer(){
 	
 void Opengl::mandelbrot1(){
 	this->selectfractale = 1;
-	this->updateGL();
 	this->updateGL();
 }
 
