@@ -5,8 +5,8 @@
 //MIN ET MAX hauteur et largeur 
 #define MIN_HAUTEUR 200
 #define MIN_LARGEUR 200
-#define MAX_HAUTEUR 700
-#define MAX_LARGEUR 1024
+#define MAX_HAUTEUR 666
+#define MAX_LARGEUR 1366
 
 
 Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite)
@@ -203,7 +203,7 @@ void Opengl::dessiner_J(std::complex<double> c)
 
 void Opengl::changerXmin(double n){
 	if(n != 0) {
-		int largeur = (this->getCadreXmin()-n)/this->getGranularite();
+		int largeur = (this->getCadreXmax()-n)/this->getGranularite();
 		int hauteur = (this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
 		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
 			this->cadre.x_min=n;
@@ -217,6 +217,7 @@ void Opengl::changerXmax(double n){
 		int hauteur = (this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
 		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
 			this->cadre.x_max=n;
+			std::cout<<"merde"<<std::endl;
 		}
 	}
 };
