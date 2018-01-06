@@ -43,8 +43,8 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
         this->zmax->move(288,17);
      
 		this->granularite2= new QDoubleSpinBox(this);
-		this->granularite2->setRange(0, 10);
-		this->granularite2->setDecimals(6);
+		this->granularite2->setRange(0.001, 10);
+		this->granularite2->setDecimals(3);
 		this->granularite2->setSingleStep(0.001);
         this->granularite2->setValue(0.001);
         this->granularite2->move(360,17);   
@@ -104,7 +104,7 @@ void Opengl::paintGL()
     //dessiner_J(c);
     dessiner_M();
 	this->resizeGL((this->getCadreXmax()-this->getCadreXmin())/this->getGranularite(),(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite());
-	this->setFixedSize((this->getCadreXmax()-this->getCadreXmin())/this->getGranularite(),(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite()+50);
+	this->setFixedSize((this->getCadreXmax()-this->getCadreXmin())/this->getGranularite()+400,(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite()+100);
 	
 	
 }
