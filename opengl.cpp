@@ -1,4 +1,5 @@
 #include "opengl.h"
+#include "cairo.hh"
 #include <GL/glut.h>
 
 
@@ -232,7 +233,17 @@ void Opengl::refresh(){
 
 void Opengl::enregistrer(){
 	Cairo save_cairo(this->cadre.x_min,this->cadre.x_max,this->cadre.y_min,this->cadre.y_max,this->z_max,this->granularite);
-	save_cairo.dessiner_M();
+	if(this->selectfractale == 1){
+	save_cairo.dessiner_M();}
+	if(this->selectfractale == 2)
+	{
+		std::complex<double> c(-0.0519,0.688);
+		save_cairo.dessiner_J(c);
+	}
+	if(this->selectfractale == 3){
+		std::complex<double> c(-0.577,0.478);
+		save_cairo.dessiner_J(c);
+	}
 }
 	
 void Opengl::mandelbrot1(){
