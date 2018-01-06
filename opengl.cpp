@@ -49,13 +49,19 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
         this->granularite2->setValue(0.001);
         this->granularite2->move(360,17);   
            
+         this->ok= new QPushButton("ok",this);
+         this->ok->move(432,17);
+         
+         this->save= new QPushButton("save",this);
+         this->save->move(504,17);
          QObject::connect(this->xmin, SIGNAL(valueChanged(double)),this, SLOT(changerXmin(double)));
          QObject::connect(this->xmax, SIGNAL(valueChanged(double)),this, SLOT(changerXmax(double)));
          QObject::connect(this->ymin, SIGNAL(valueChanged(double)),this, SLOT(changerYmin(double)));
          QObject::connect(this->ymax, SIGNAL(valueChanged(double)),this, SLOT(changerYmax(double)));
          QObject::connect(this->zmax, SIGNAL(valueChanged(double)),this, SLOT(changerZmax(double)));
          QObject::connect(this->granularite2, SIGNAL(valueChanged(double)),this, SLOT(changerGran(double)));
-		  
+		 QObject::connect(this->ok, SIGNAL(clicked()), this, SLOT(refresh()));
+		 QObject::connect(this->save, SIGNAL(clicked()), this, SLOT(enregistrer()));  
 		   	//~ bool ok=false;
 	
 	//~ this->xmin=QInputDialog::getDouble(this,"param","cadre xmin",0,-5,5,4, &ok);
@@ -104,7 +110,7 @@ void Opengl::paintGL()
     //dessiner_J(c);
     dessiner_M();
 	this->resizeGL((this->getCadreXmax()-this->getCadreXmin())/this->getGranularite(),(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite());
-	this->setFixedSize((this->getCadreXmax()-this->getCadreXmin())/this->getGranularite()+400,(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite()+100);
+	this->setFixedSize((this->getCadreXmax()-this->getCadreXmin())/this->getGranularite()+450,(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite()+100);
 	
 	
 }
@@ -157,32 +163,42 @@ void Opengl::dessiner_J(std::complex<double> c)
 
 void Opengl::changerXmin(double n){
 	this->cadre.x_min=n;
-	this->updateGL();
+	
 	};
 	
 void Opengl::changerXmax(double n){
 	this->cadre.x_max=n;
-	this->updateGL();
+	
 	};
 	
 void Opengl::changerYmin(double n){
 	this->cadre.y_min=n;
-	this->updateGL();
+	
 	};
 
 void Opengl::changerYmax(double n){
 	this->cadre.y_max=n;
-	this->updateGL();
+	
 	};
 
 void Opengl::changerZmax(double n){
 	this->z_max=n;
-	this->updateGL();
+	
 	};
 
 void Opengl::changerGran(double n){
 	this->granularite=n;
-	this->updateGL();
+	
 	};
 
+void Opengl::refresh(){
+	this->updateGL();
+}
+
+
+void Opengl::enregistrer(){
+	//à faire
+}
+	
+	
 

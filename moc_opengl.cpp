@@ -22,7 +22,7 @@ static const uint qt_meta_data_Opengl[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -36,6 +36,8 @@ static const uint qt_meta_data_Opengl[] = {
       70,    8,    7,    7, 0x0a,
       90,    8,    7,    7, 0x0a,
      110,    8,    7,    7, 0x0a,
+     130,    7,    7,    7, 0x0a,
+     140,    7,    7,    7, 0x0a,
 
        0        // eod
 };
@@ -44,7 +46,8 @@ static const char qt_meta_stringdata_Opengl[] = {
     "Opengl\0\0n\0changerXmin(double)\0"
     "changerXmax(double)\0changerYmin(double)\0"
     "changerYmax(double)\0changerZmax(double)\0"
-    "changerGran(double)\0"
+    "changerGran(double)\0refresh()\0"
+    "enregistrer()\0"
 };
 
 void Opengl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -59,6 +62,8 @@ void Opengl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 3: _t->changerYmax((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 4: _t->changerZmax((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 5: _t->changerGran((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 6: _t->refresh(); break;
+        case 7: _t->enregistrer(); break;
         default: ;
         }
     }
@@ -98,9 +103,9 @@ int Opengl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
 }

@@ -20,11 +20,12 @@ class Opengl : public GLWidget, public Dessin
     QDoubleSpinBox *zmax;
     QDoubleSpinBox *granularite2;
     
-    QDoubleSpinBox *C_r;
-    QDoubleSpinBox *C_i;
-    QPushButton *J;
-    QPushButton *M;
+    //~ QDoubleSpinBox *C_r;
+    //~ QDoubleSpinBox *C_i;
+    //~ QPushButton *J;
+    //~ QPushButton *M;
     QPushButton *save;
+    QPushButton *ok;
     
     
     bool J_M;
@@ -49,6 +50,8 @@ public slots:
 	void changerYmax(double n);
 	void changerZmax(double n);
 	void changerGran(double n);
+	void refresh();
+	void enregistrer();
 };
 
 #endif
