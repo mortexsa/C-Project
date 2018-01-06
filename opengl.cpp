@@ -231,7 +231,8 @@ void Opengl::refresh(){
 
 
 void Opengl::enregistrer(){
-	//à faire
+	Cairo save_cairo(this->cadre.x_min,this->cadre.x_max,this->cadre.y_min,this->cadre.y_max,this->z_max,this->granularite);
+	save_cairo.dessiner_M();
 }
 	
 void Opengl::mandelbrot1(){

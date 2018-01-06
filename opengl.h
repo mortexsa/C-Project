@@ -2,6 +2,7 @@
 #define OPENGL_H
 
 #include <glWidget.h>
+#include "cairo.hh"
 #include "Dessin.hh"
 #include <complex>
 #include <iostream>
