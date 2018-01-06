@@ -23,12 +23,12 @@ class Opengl : public GLWidget, public Dessin
     QDoubleSpinBox *C_r;
     QDoubleSpinBox *C_i;
     QPushButton *J;
-    QpushButton *M;
+    QPushButton *M;
     QPushButton *save;
     
     
     bool J_M;
-    complex<double> c;
+    std::complex<double> c;
     
     
     

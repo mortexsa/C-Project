@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	    //~ QPushButton un("Bonjour",&test);
 	    //~ un.move(0,0);
 	    
-	    test.setFixedSize((3)/0.003,(2)/0.003);
+	    //test.setFixedSize((3)/0.003,(2)/0.003);
 	    //~ test.setLayout(layout); 
 		//~ test.ouvrirDialogue();
 	    test.show();   //Exécution de notre fenêtre de rendu OpenGL

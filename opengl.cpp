@@ -43,8 +43,8 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
         this->zmax->move(288,17);
      
 		this->granularite2= new QDoubleSpinBox(this);
-		this->granularite2->setRange(-10, 10);
-		this->granularite2->setDecimals(3);
+		this->granularite2->setRange(0, 10);
+		this->granularite2->setDecimals(6);
 		this->granularite2->setSingleStep(0.001);
         this->granularite2->setValue(0.001);
         this->granularite2->move(360,17);   
@@ -88,10 +88,10 @@ void Opengl::resizeGL(int width, int height)
     if(height == 0)
         height = 1;
     glViewport(0, 0, width, height);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
+    //glMatrixMode(GL_PROJECTION);
+    //glLoadIdentity();
     //~ gluPerspective(45.0f, (GLfloat)width/(GLfloat)height, 0.1f, 100.0f);
-    glMatrixMode(GL_MODELVIEW);
+    //glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
 
@@ -101,8 +101,12 @@ void Opengl::paintGL()
 {
 	
     std::complex<double> c(-0.0519,0.688);
-    dessiner_J(c);
-    //dessiner_M();
+    //dessiner_J(c);
+    dessiner_M();
+	this->resizeGL((this->getCadreXmax()-this->getCadreXmin())/this->getGranularite(),(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite());
+	this->setFixedSize((this->getCadreXmax()-this->getCadreXmin())/this->getGranularite(),(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite()+50);
+	
+	
 }
 
 void Opengl::dessiner_M()
