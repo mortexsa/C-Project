@@ -4,66 +4,81 @@
 
 Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite)
 	   : GLWidget(1, parent, "fractal"), Dessin(x_min, x_max, y_min, y_max,  z_max, granularite){
-		QLabel *xminLabel= new QLabel("xmin xmax ymin ymax zmax granularite",this);
-		xminLabel->move(0,0);
-		this->xmin= new QDoubleSpinBox(this);
-		this->xmin->setRange(-10, 10);
-		this->xmin->setSingleStep(0.1);
-        this->xmin->setValue(-2);
-        this->xmin->move(0,17);
-        
-      
-		this->xmax= new QDoubleSpinBox(this);
-		this->xmax->setRange(-10, 10);
-		this->xmax->setSingleStep(0.1);
-        this->xmax->setValue(2);
-        this->xmax->move(72,17);
-        
-     
-		this->ymin= new QDoubleSpinBox(this);
-		this->ymin->setRange(-10, 10);
-		this->ymin->setSingleStep(0.1);
-        this->ymin->setValue(-2);
-        this->ymin->move(144,17);
-        
-   
-		this->ymax= new QDoubleSpinBox(this);
-		this->ymax->setRange(-10, 10);
-		this->ymax->setSingleStep(0.1);
-        this->ymax->setValue(2);
-        this->ymax->move(216,17);
-           
-           
-           
-    
-		this->zmax= new QDoubleSpinBox(this);
-		this->zmax->setRange(-10, 10);
-		this->zmax->setSingleStep(0.1);
-        this->zmax->setValue(2);
-        this->zmax->move(288,17);
-     
-		this->granularite2= new QDoubleSpinBox(this);
-		this->granularite2->setRange(0.001, 10);
-		this->granularite2->setDecimals(3);
-		this->granularite2->setSingleStep(0.001);
-        this->granularite2->setValue(0.001);
-        this->granularite2->move(360,17);   
-           
-         this->ok= new QPushButton("ok",this);
-         this->ok->move(432,17);
-         
-         this->save= new QPushButton("save",this);
-         this->save->move(504,17);
-         QObject::connect(this->xmin, SIGNAL(valueChanged(double)),this, SLOT(changerXmin(double)));
-         QObject::connect(this->xmax, SIGNAL(valueChanged(double)),this, SLOT(changerXmax(double)));
-         QObject::connect(this->ymin, SIGNAL(valueChanged(double)),this, SLOT(changerYmin(double)));
-         QObject::connect(this->ymax, SIGNAL(valueChanged(double)),this, SLOT(changerYmax(double)));
-         QObject::connect(this->zmax, SIGNAL(valueChanged(double)),this, SLOT(changerZmax(double)));
-         QObject::connect(this->granularite2, SIGNAL(valueChanged(double)),this, SLOT(changerGran(double)));
-		 QObject::connect(this->ok, SIGNAL(clicked()), this, SLOT(refresh()));
-		 QObject::connect(this->save, SIGNAL(clicked()), this, SLOT(enregistrer()));  
-		   	//~ bool ok=false;
+
+	this->selectfractale = 1;
+
+
+	QLabel *xminLabel= new QLabel("   xmin           xmax            ymin          ymax          zmax        Granularite                                            ",this);
+	xminLabel->move(0,0);
+	this->xmin= new QDoubleSpinBox(this);
+	this->xmin->setRange(-10, 10);
+	this->xmin->setSingleStep(0.1);
+	this->xmin->setValue(x_min);
+	this->xmin->move(0,17);
 	
+	
+	this->xmax= new QDoubleSpinBox(this);
+	this->xmax->setRange(-10, 10);
+	this->xmax->setSingleStep(0.1);
+	this->xmax->setValue(x_max);
+	this->xmax->move(72,17);
+	
+	
+	this->ymin= new QDoubleSpinBox(this);
+	this->ymin->setRange(-10, 10);
+	this->ymin->setSingleStep(0.1);
+	this->ymin->setValue(y_min);
+	this->ymin->move(144,17);
+	
+
+	this->ymax= new QDoubleSpinBox(this);
+	this->ymax->setRange(-10, 10);
+	this->ymax->setSingleStep(0.1);
+	this->ymax->setValue(y_max);
+	this->ymax->move(216,17);
+		
+		
+		
+
+	this->zmax= new QDoubleSpinBox(this);
+	this->zmax->setRange(-10, 10);
+	this->zmax->setSingleStep(0.1);
+	this->zmax->setValue(z_max);
+	this->zmax->move(288,17);
+	
+	this->granularite2= new QDoubleSpinBox(this);
+	this->granularite2->setRange(0.001, 10);
+	this->granularite2->setDecimals(3);
+	this->granularite2->setSingleStep(0.001);
+	this->granularite2->setValue(granularite);
+	this->granularite2->move(360,17);   
+		
+	this->ok= new QPushButton("ok",this);
+	this->ok->move(432,17);
+	
+	this->save= new QPushButton("save",this);
+	this->save->move(504,17);
+	
+	this->mandelbrot= new QPushButton("Mandelbrot",this);
+	this->mandelbrot->move(0,44);
+	this->juliaFatou1= new QPushButton("Julia[-0.0519;0.688]",this);
+	this->juliaFatou1->move(100,44);
+	this->juliaFatou2= new QPushButton("Julia[-0.577;0.478]",this);
+	this->juliaFatou2->move(252,44);
+	
+	QObject::connect(this->xmin, SIGNAL(valueChanged(double)),this, SLOT(changerXmin(double)));
+	QObject::connect(this->xmax, SIGNAL(valueChanged(double)),this, SLOT(changerXmax(double)));
+	QObject::connect(this->ymin, SIGNAL(valueChanged(double)),this, SLOT(changerYmin(double)));
+	QObject::connect(this->ymax, SIGNAL(valueChanged(double)),this, SLOT(changerYmax(double)));
+	QObject::connect(this->zmax, SIGNAL(valueChanged(double)),this, SLOT(changerZmax(double)));
+	QObject::connect(this->granularite2, SIGNAL(valueChanged(double)),this, SLOT(changerGran(double)));
+	QObject::connect(this->ok, SIGNAL(clicked()), this, SLOT(refresh()));
+	QObject::connect(this->save, SIGNAL(clicked()), this, SLOT(enregistrer()));
+	QObject::connect(this->mandelbrot, SIGNAL(clicked()), this, SLOT(mandelbrot1()));
+	QObject::connect(this->juliaFatou1, SIGNAL(clicked()), this, SLOT(juliafatou1()));
+	QObject::connect(this->juliaFatou2, SIGNAL(clicked()), this, SLOT(juliafatou2()));  
+	//~ bool ok=false;
+
 	//~ this->xmin=QInputDialog::getDouble(this,"param","cadre xmin",0,-5,5,4, &ok);
 	//~ this->xmax=QInputDialog::getDouble(this,"param","cadre xmax",0,-5,5,4, &ok);
 	//~ this->ymin=QInputDialog::getDouble(this,"param","cadre ymin",0,-5,5,4, &ok);
@@ -94,6 +109,7 @@ void Opengl::resizeGL(int width, int height)
     if(height == 0)
         height = 1;
     glViewport(0, 0, width, height);
+	
     //glMatrixMode(GL_PROJECTION);
     //glLoadIdentity();
     //~ gluPerspective(45.0f, (GLfloat)width/(GLfloat)height, 0.1f, 100.0f);
@@ -105,12 +121,27 @@ void Opengl::resizeGL(int width, int height)
 
 void Opengl::paintGL()
 {
+	int largeur = (this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
+	int hauteur = (this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
+    if(this->selectfractale == 1){
+		dessiner_M();
+	}else if(this->selectfractale == 2){
+		std::complex<double> c(-0.0519,0.688);
+    	dessiner_J(c);
+	}else if(this->selectfractale == 3){
+		std::complex<double> c(-0.577,0.478);
+    	dessiner_J(c);
+	}
 	
-    std::complex<double> c(-0.0519,0.688);
-    //dessiner_J(c);
-    dessiner_M();
-	this->resizeGL((this->getCadreXmax()-this->getCadreXmin())/this->getGranularite(),(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite());
-	this->setFixedSize((this->getCadreXmax()-this->getCadreXmin())/this->getGranularite()+450,(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite()+100);
+    //
+	this->resizeGL(largeur,hauteur);
+	
+	if(largeur > 600){
+		this->setFixedSize(largeur,hauteur+80);
+	}
+	else{
+		this->setFixedSize(600,hauteur+80);
+	}
 	
 	
 }
@@ -193,6 +224,7 @@ void Opengl::changerGran(double n){
 
 void Opengl::refresh(){
 	this->updateGL();
+	this->updateGL();
 }
 
 
@@ -200,5 +232,19 @@ void Opengl::enregistrer(){
 	//à faire
 }
 	
-	
+void Opengl::mandelbrot1(){
+	this->selectfractale = 1;
+	this->updateGL();
+	this->updateGL();
+}
+
+void Opengl::juliafatou1(){
+	this->selectfractale = 2;
+	this->updateGL();
+}
+
+void Opengl::juliafatou2(){
+	this->selectfractale = 3;
+	this->updateGL();
+}
 

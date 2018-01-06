@@ -26,11 +26,15 @@ class Opengl : public GLWidget, public Dessin
     //~ QPushButton *M;
     QPushButton *save;
     QPushButton *ok;
+    QPushButton *mandelbrot;
+    QPushButton *juliaFatou1;
+    QPushButton *juliaFatou2;
     
     
     bool J_M;
     std::complex<double> c;
-    
+ private: 
+    int selectfractale;
     
     
 public:
@@ -52,6 +56,9 @@ public slots:
 	void changerGran(double n);
 	void refresh();
 	void enregistrer();
+    void mandelbrot1();
+    void juliafatou1();
+    void juliafatou2();
 };
 
 #endif

@@ -16,13 +16,14 @@ int main(int argc, char *argv[])
 	    
 
 	    
-	    Opengl test(0,-2,1,-1,1,2,0.003);
+	    Opengl test(0,-2,1,-1,1,2,0.004);
 	    //~ QPushButton un("Bonjour",&test);
 	    //~ un.move(0,0);
 	    
 	    //test.setFixedSize((3)/0.003,(2)/0.003);
 	    //~ test.setLayout(layout); 
 		//~ test.ouvrirDialogue();
+		
 	    test.show();   //Exécution de notre fenêtre de rendu OpenGL
 		//test.setFixedSize((2.6+2.6)/0.003,(2.0+2.0)/0.003);
 		
