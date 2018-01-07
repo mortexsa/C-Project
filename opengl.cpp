@@ -72,6 +72,8 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	this->juliaFatou1->move(100,44);
 	this->juliaFatou2= new QPushButton("Julia[-0.577;0.478]",this);
 	this->juliaFatou2->move(252,44);
+	this->zoom= new QPushButton("zoom",this);
+	this->zoom->move(350,44);
 	
 	QObject::connect(this->xmin, SIGNAL(valueChanged(double)),this, SLOT(changerXmin(double)));
 	QObject::connect(this->xmax, SIGNAL(valueChanged(double)),this, SLOT(changerXmax(double)));
@@ -84,6 +86,7 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	QObject::connect(this->mandelbrot, SIGNAL(clicked()), this, SLOT(mandelbrot1()));
 	QObject::connect(this->juliaFatou1, SIGNAL(clicked()), this, SLOT(juliafatou1()));
 	QObject::connect(this->juliaFatou2, SIGNAL(clicked()), this, SLOT(juliafatou2()));  
+	QObject::connect(this->zoom, SIGNAL(clicked()), this, SLOT(zoomFunc()));  
 	this->updateGL();
 
 	//~ bool ok=false;
@@ -217,7 +220,6 @@ void Opengl::changerXmax(double n){
 		int hauteur = (this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
 		if(largeur > MIN_LARGEUR && hauteur > MIN_HAUTEUR && largeur < MAX_LARGEUR && hauteur < MAX_HAUTEUR){
 			this->cadre.x_max=n;
-			std::cout<<"merde"<<std::endl;
 		}
 	}
 };
@@ -244,8 +246,7 @@ void Opengl::changerYmax(double n){
 
 void Opengl::changerZmax(double n){
 	this->z_max=n;
-	
-	};
+};
 
 void Opengl::changerGran(double n){
 	if(n != 0) {
@@ -293,3 +294,13 @@ void Opengl::juliafatou2(){
 	this->updateGL();
 }
 
+void Opengl::zoomFunc(){
+	int largeur = (this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
+	int hauteur = (this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
+	this->cadre.x_min = this->cadre.x_min/2;
+	this->cadre.x_max = this->cadre.x_max/2;
+	this->cadre.y_min = this->cadre.y_min/2;
+	this->cadre.y_max = this->cadre.y_max/2;
+	this->granularite = (this->getCadreXmax()-this->getCadreXmin())/largeur;
+	this->updateGL();
+}

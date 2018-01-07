@@ -30,6 +30,7 @@ class Opengl : public GLWidget, public Dessin
     QPushButton *mandelbrot;
     QPushButton *juliaFatou1;
     QPushButton *juliaFatou2;
+    QPushButton *zoom;
     
     
     bool J_M;
@@ -60,6 +61,7 @@ public slots:
     void mandelbrot1();
     void juliafatou1();
     void juliafatou2();
+    void zoomFunc();
 };
 
 #endif
