@@ -51,6 +51,7 @@ public:
     void paintGL();
     void dessiner_J(std::complex<double> c);
     void dessiner_M();
+    void Opengl::keyPressEvent(QKeyEvent *keyEvent)
     
     
 public slots:

@@ -17,15 +17,7 @@ GLWidget::GLWidget(int framesPerSecond, QWidget *parent, char *name)
     //~ }
 }
 
-void GLWidget::keyPressEvent(QKeyEvent *keyEvent)
-{
-    switch(keyEvent->key())
-    {
-        case Qt::Key_Escape:
-            close();
-            break;
-    }
-}
+
 
 void GLWidget::timeOutSlot()
 {

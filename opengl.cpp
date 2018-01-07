@@ -371,3 +371,30 @@ void Opengl::gaucheFunc(){
 	this->cadre.x_min += valeurPas;
 	this->updateGL();
 }
+
+void Opengl::keyPressEvent(QKeyEvent *keyEvent)
+{
+    switch(keyEvent->key())
+    {
+        case Qt::Key_Escape:
+			delete this->label;
+			delete this->xmin;
+			delete this->xmax;
+			delete this->ymin;
+			delete this->zmax;
+			delete this->granularite2;
+			delete this->save;
+			delete this->ok;
+			delete this->mandelbrot;
+			delete this->juliaFatou1;
+			delete this->juliaFatou2;
+			delete this->zoom;
+			delete this->dezoom;
+			delete this->bas;
+            delete this->haut;
+            delete this->gauche;
+            delete this->droit;
+            close();
+            break;
+    }
+}

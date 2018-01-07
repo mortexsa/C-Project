@@ -13,7 +13,7 @@ public:
     virtual void initializeGL() = 0;
     virtual void resizeGL(int width, int height) = 0;
     virtual void paintGL() = 0;
-    virtual void keyPressEvent( QKeyEvent *keyEvent );
+   
         
 public slots:
     virtual void timeOutSlot();
