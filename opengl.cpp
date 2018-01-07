@@ -7,6 +7,7 @@
 #define MIN_LARGEUR 200
 #define MAX_HAUTEUR 666
 #define MAX_LARGEUR 1366
+#define COEFFZOOM 1.5
 
 
 Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite)
@@ -73,7 +74,9 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	this->juliaFatou2= new QPushButton("Julia[-0.577;0.478]",this);
 	this->juliaFatou2->move(252,44);
 	this->zoom= new QPushButton("zoom",this);
-	this->zoom->move(350,44);
+	this->zoom->move(370,44);
+	this->dezoom= new QPushButton("dezoom",this);
+	this->dezoom->move(450,44);
 	
 	QObject::connect(this->xmin, SIGNAL(valueChanged(double)),this, SLOT(changerXmin(double)));
 	QObject::connect(this->xmax, SIGNAL(valueChanged(double)),this, SLOT(changerXmax(double)));
@@ -87,6 +90,7 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	QObject::connect(this->juliaFatou1, SIGNAL(clicked()), this, SLOT(juliafatou1()));
 	QObject::connect(this->juliaFatou2, SIGNAL(clicked()), this, SLOT(juliafatou2()));  
 	QObject::connect(this->zoom, SIGNAL(clicked()), this, SLOT(zoomFunc()));  
+	QObject::connect(this->dezoom, SIGNAL(clicked()), this, SLOT(dezoomFunc()));  
 	this->updateGL();
 
 	//~ bool ok=false;
@@ -296,11 +300,20 @@ void Opengl::juliafatou2(){
 
 void Opengl::zoomFunc(){
 	int largeur = (this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
-	int hauteur = (this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
-	this->cadre.x_min = this->cadre.x_min/2;
-	this->cadre.x_max = this->cadre.x_max/2;
-	this->cadre.y_min = this->cadre.y_min/2;
-	this->cadre.y_max = this->cadre.y_max/2;
+	this->cadre.x_min = this->cadre.x_min/COEFFZOOM;
+	this->cadre.x_max = this->cadre.x_max/COEFFZOOM;
+	this->cadre.y_min = this->cadre.y_min/COEFFZOOM;
+	this->cadre.y_max = this->cadre.y_max/COEFFZOOM;
+	this->granularite = (this->getCadreXmax()-this->getCadreXmin())/largeur;
+	this->updateGL();
+}
+
+void Opengl::dezoomFunc(){
+	int largeur = (this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
+	this->cadre.x_min = this->cadre.x_min*COEFFZOOM;
+	this->cadre.x_max = this->cadre.x_max*COEFFZOOM;
+	this->cadre.y_min = this->cadre.y_min*COEFFZOOM;
+	this->cadre.y_max = this->cadre.y_max*COEFFZOOM;
 	this->granularite = (this->getCadreXmax()-this->getCadreXmin())/largeur;
 	this->updateGL();
 }

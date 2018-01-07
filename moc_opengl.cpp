@@ -22,7 +22,7 @@ static const uint qt_meta_data_Opengl[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -42,6 +42,7 @@ static const uint qt_meta_data_Opengl[] = {
      168,    7,    7,    7, 0x0a,
      182,    7,    7,    7, 0x0a,
      196,    7,    7,    7, 0x0a,
+     207,    7,    7,    7, 0x0a,
 
        0        // eod
 };
@@ -52,7 +53,7 @@ static const char qt_meta_stringdata_Opengl[] = {
     "changerYmax(double)\0changerZmax(double)\0"
     "changerGran(double)\0refresh()\0"
     "enregistrer()\0mandelbrot1()\0juliafatou1()\0"
-    "juliafatou2()\0zoomFunc()\0"
+    "juliafatou2()\0zoomFunc()\0dezoomFunc()\0"
 };
 
 void Opengl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -73,6 +74,7 @@ void Opengl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 9: _t->juliafatou1(); break;
         case 10: _t->juliafatou2(); break;
         case 11: _t->zoomFunc(); break;
+        case 12: _t->dezoomFunc(); break;
         default: ;
         }
     }
@@ -112,9 +114,9 @@ int Opengl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }
