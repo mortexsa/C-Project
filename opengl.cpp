@@ -172,11 +172,11 @@ void Opengl::paintGL()
     //
 	
 	
-	if(largeur > 600){
+	if(largeur > 740){
 		this->setFixedSize(largeur,hauteur+80);
 	}
 	else{
-		this->setFixedSize(600,hauteur+80);
+		this->setFixedSize(740,hauteur+80);
 	}
 	this->resizeGL(largeur,hauteur);
 	
