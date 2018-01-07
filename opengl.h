@@ -32,8 +32,11 @@ class Opengl : public GLWidget, public Dessin
     QPushButton *juliaFatou2;
     QPushButton *zoom;
     QPushButton *dezoom;
-    
-    
+    QPushButton *bas;
+    QPushButton *haut;
+    QPushButton *droit;
+    QPushButton *gauche;
+
     bool J_M;
     std::complex<double> c;
  private: 
@@ -64,6 +67,10 @@ public slots:
     void juliafatou2();
     void zoomFunc();
     void dezoomFunc();
+    void basFunc();
+    void hautFunc();
+    void droitFunc();
+    void gaucheFunc();
 };
 
 #endif

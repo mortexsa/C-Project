@@ -8,6 +8,7 @@
 #define MAX_HAUTEUR 666
 #define MAX_LARGEUR 1366
 #define COEFFZOOM 1.5
+#define DEPLACEMENT 10
 
 
 Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const double y_min, const double y_max, const double z_max,double granularite)
@@ -16,7 +17,7 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	this->selectfractale = 1;
 
 
-	QLabel *xminLabel= new QLabel("   xmin           xmax            ymin          ymax          zmax        Granularite                                            ",this);
+	QLabel *xminLabel= new QLabel("   xmin           xmax            ymin          ymax          zmax        Granularite                                                    Direction   ",this);
 	xminLabel->move(0,0);
 	this->xmin= new QDoubleSpinBox(this);
 	this->xmin->setRange(-10, 10);
@@ -62,22 +63,35 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	this->granularite2->move(360,17);   
 		
 	this->ok= new QPushButton("ok",this);
-	this->ok->move(432,17);
+	this->ok->move(435,17);
 	
 	this->save= new QPushButton("save",this);
-	this->save->move(504,17);
+	this->save->move(520,17);
 	
 	this->mandelbrot= new QPushButton("Mandelbrot",this);
 	this->mandelbrot->move(0,44);
 	this->juliaFatou1= new QPushButton("Julia[-0.0519;0.688]",this);
-	this->juliaFatou1->move(100,44);
+	this->juliaFatou1->move(99,44);
 	this->juliaFatou2= new QPushButton("Julia[-0.577;0.478]",this);
-	this->juliaFatou2->move(252,44);
+	this->juliaFatou2->move(250,44);
 	this->zoom= new QPushButton("zoom",this);
-	this->zoom->move(370,44);
-	this->dezoom= new QPushButton("dezoom",this);
-	this->dezoom->move(450,44);
+	this->zoom->move(392,44);
 	
+
+	//4 bouton de direction 
+	this->haut= new QPushButton("h",this);
+	this->haut->move(605,17);
+	this->droit= new QPushButton("d",this);
+	this->droit->move(555,44);
+	this->gauche= new QPushButton("g",this);
+	this->gauche->move(655,44);
+	this->bas= new QPushButton("b",this);
+	this->bas->move(605,44);
+
+	//dezoom
+	this->dezoom= new QPushButton("dezoom",this);
+	this->dezoom->move(476,44);
+
 	QObject::connect(this->xmin, SIGNAL(valueChanged(double)),this, SLOT(changerXmin(double)));
 	QObject::connect(this->xmax, SIGNAL(valueChanged(double)),this, SLOT(changerXmax(double)));
 	QObject::connect(this->ymin, SIGNAL(valueChanged(double)),this, SLOT(changerYmin(double)));
@@ -88,9 +102,15 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	QObject::connect(this->save, SIGNAL(clicked()), this, SLOT(enregistrer()));
 	QObject::connect(this->mandelbrot, SIGNAL(clicked()), this, SLOT(mandelbrot1()));
 	QObject::connect(this->juliaFatou1, SIGNAL(clicked()), this, SLOT(juliafatou1()));
-	QObject::connect(this->juliaFatou2, SIGNAL(clicked()), this, SLOT(juliafatou2()));  
+	QObject::connect(this->juliaFatou2, SIGNAL(clicked()), this, SLOT(juliafatou2())); 
+	QObject::connect(this->bas, SIGNAL(clicked()), this, SLOT(basFunc()));
+	QObject::connect(this->haut, SIGNAL(clicked()), this, SLOT(hautFunc()));
+	QObject::connect(this->droit, SIGNAL(clicked()), this, SLOT(droitFunc()));
+	QObject::connect(this->gauche, SIGNAL(clicked()), this, SLOT(gaucheFunc()));  
 	QObject::connect(this->zoom, SIGNAL(clicked()), this, SLOT(zoomFunc()));  
-	QObject::connect(this->dezoom, SIGNAL(clicked()), this, SLOT(dezoomFunc()));  
+	QObject::connect(this->dezoom, SIGNAL(clicked()), this, SLOT(dezoomFunc()));
+	
+	
 	this->updateGL();
 
 	//~ bool ok=false;
@@ -150,7 +170,7 @@ void Opengl::paintGL()
 	}
 	
     //
-	this->resizeGL(largeur,hauteur);
+	
 	
 	if(largeur > 600){
 		this->setFixedSize(largeur,hauteur+80);
@@ -158,7 +178,7 @@ void Opengl::paintGL()
 	else{
 		this->setFixedSize(600,hauteur+80);
 	}
-	
+	this->resizeGL(largeur,hauteur);
 	
 }
 
@@ -299,6 +319,7 @@ void Opengl::juliafatou2(){
 }
 
 void Opengl::zoomFunc(){
+	this->updateGL();
 	int largeur = (this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
 	this->cadre.x_min = this->cadre.x_min/COEFFZOOM;
 	this->cadre.x_max = this->cadre.x_max/COEFFZOOM;
@@ -309,11 +330,44 @@ void Opengl::zoomFunc(){
 }
 
 void Opengl::dezoomFunc(){
+	this->updateGL();
 	int largeur = (this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
 	this->cadre.x_min = this->cadre.x_min*COEFFZOOM;
 	this->cadre.x_max = this->cadre.x_max*COEFFZOOM;
 	this->cadre.y_min = this->cadre.y_min*COEFFZOOM;
 	this->cadre.y_max = this->cadre.y_max*COEFFZOOM;
 	this->granularite = (this->getCadreXmax()-this->getCadreXmin())/largeur;
+	this->updateGL();
+}
+
+void Opengl::basFunc(){
+	this->updateGL();
+	double valeurPas = (this->getCadreYmax()-this->getCadreYmin())/DEPLACEMENT;
+	this->cadre.y_max -= valeurPas;
+	this->cadre.y_min -= valeurPas;
+	this->updateGL();
+}
+
+void Opengl::hautFunc(){
+	this->updateGL();
+	double valeurPas = (this->getCadreYmax()-this->getCadreYmin())/DEPLACEMENT;
+	this->cadre.y_max += valeurPas;
+	this->cadre.y_min += valeurPas;
+	this->updateGL();
+}
+
+void Opengl::droitFunc(){
+	this->updateGL();
+	double valeurPas = (this->getCadreXmax()-this->getCadreXmin())/DEPLACEMENT;
+	this->cadre.x_max -= valeurPas;
+	this->cadre.x_min -= valeurPas;
+	this->updateGL();
+}
+
+void Opengl::gaucheFunc(){
+	this->updateGL();
+	double valeurPas = (this->getCadreXmax()-this->getCadreXmin())/DEPLACEMENT;
+	this->cadre.x_max += valeurPas;
+	this->cadre.x_min += valeurPas;
 	this->updateGL();
 }

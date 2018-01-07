@@ -22,7 +22,7 @@ static const uint qt_meta_data_Opengl[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      17,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -43,6 +43,10 @@ static const uint qt_meta_data_Opengl[] = {
      182,    7,    7,    7, 0x0a,
      196,    7,    7,    7, 0x0a,
      207,    7,    7,    7, 0x0a,
+     220,    7,    7,    7, 0x0a,
+     230,    7,    7,    7, 0x0a,
+     241,    7,    7,    7, 0x0a,
+     253,    7,    7,    7, 0x0a,
 
        0        // eod
 };
@@ -54,6 +58,8 @@ static const char qt_meta_stringdata_Opengl[] = {
     "changerGran(double)\0refresh()\0"
     "enregistrer()\0mandelbrot1()\0juliafatou1()\0"
     "juliafatou2()\0zoomFunc()\0dezoomFunc()\0"
+    "basFunc()\0hautFunc()\0droitFunc()\0"
+    "gaucheFunc()\0"
 };
 
 void Opengl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -75,6 +81,10 @@ void Opengl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 10: _t->juliafatou2(); break;
         case 11: _t->zoomFunc(); break;
         case 12: _t->dezoomFunc(); break;
+        case 13: _t->basFunc(); break;
+        case 14: _t->hautFunc(); break;
+        case 15: _t->droitFunc(); break;
+        case 16: _t->gaucheFunc(); break;
         default: ;
         }
     }
@@ -114,9 +124,9 @@ int Opengl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 17;
     }
     return _id;
 }
