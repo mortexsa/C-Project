@@ -14,6 +14,7 @@
 class Opengl : public GLWidget, public Dessin 
 {
     Q_OBJECT;
+    QLabel * label;
     QDoubleSpinBox *xmin;
     QDoubleSpinBox *xmax;
     QDoubleSpinBox *ymin;
@@ -51,7 +52,7 @@ public:
     void paintGL();
     void dessiner_J(std::complex<double> c);
     void dessiner_M();
-    void Opengl::keyPressEvent(QKeyEvent *keyEvent)
+    void keyPressEvent(QKeyEvent *keyEvent);
     
     
 public slots:

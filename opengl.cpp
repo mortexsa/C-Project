@@ -17,8 +17,8 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	this->selectfractale = 1;
 
 
-	QLabel *xminLabel= new QLabel("   xmin           xmax            ymin          ymax          zmax        Granularite                                                    Direction   ",this);
-	xminLabel->move(0,0);
+	this->label= new QLabel("   xmin           xmax            ymin          ymax          zmax        Granularite                                                    Direction   ",this);
+	label->move(0,0);
 	this->xmin= new QDoubleSpinBox(this);
 	this->xmin->setRange(-10, 10);
 	this->xmin->setSingleStep(0.1);
