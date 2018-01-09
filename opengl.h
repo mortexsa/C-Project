@@ -95,7 +95,7 @@ public:
      */
     void dessiner_M();
 
-    //! \brief fonction pour les touches clavier
+    //! \brief fonction pour les touches clavier : ici la touche echape pour quitter la fenetre
     void keyPressEvent(QKeyEvent *keyEvent);
     
     

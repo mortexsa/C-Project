@@ -82,9 +82,9 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	this->haut= new QPushButton("h",this);
 	this->haut->move(605,17);
 	this->droit= new QPushButton("d",this);
-	this->droit->move(555,44);
+	this->droit->move(655,44);
 	this->gauche= new QPushButton("g",this);
-	this->gauche->move(655,44);
+	this->gauche->move(555,44);
 	this->bas= new QPushButton("b",this);
 	this->bas->move(605,44);
 
@@ -105,23 +105,14 @@ Opengl::Opengl(QWidget *parent,const double x_min, const double x_max, const dou
 	QObject::connect(this->juliaFatou2, SIGNAL(clicked()), this, SLOT(juliafatou2())); 
 	QObject::connect(this->bas, SIGNAL(clicked()), this, SLOT(basFunc()));
 	QObject::connect(this->haut, SIGNAL(clicked()), this, SLOT(hautFunc()));
-	QObject::connect(this->droit, SIGNAL(clicked()), this, SLOT(droitFunc()));
-	QObject::connect(this->gauche, SIGNAL(clicked()), this, SLOT(gaucheFunc()));  
+	QObject::connect(this->droit, SIGNAL(clicked()), this, SLOT(gaucheFunc()));
+	QObject::connect(this->gauche, SIGNAL(clicked()), this, SLOT(droitFunc()));  
 	QObject::connect(this->zoom, SIGNAL(clicked()), this, SLOT(zoomFunc()));  
 	QObject::connect(this->dezoom, SIGNAL(clicked()), this, SLOT(dezoomFunc()));
 	
 	
 	this->updateGL();
-
-	//~ bool ok=false;
-
-	//~ this->xmin=QInputDialog::getDouble(this,"param","cadre xmin",0,-5,5,4, &ok);
-	//~ this->xmax=QInputDialog::getDouble(this,"param","cadre xmax",0,-5,5,4, &ok);
-	//~ this->ymin=QInputDialog::getDouble(this,"param","cadre ymin",0,-5,5,4, &ok);
-	//~ this->ymax=QInputDialog::getDouble(this,"param","cadre ymax",0,-5,5,4, &ok);
-	//~ this->zmax=QInputDialog::getDouble(this,"param","cadre zmax",0,-5,5,4, &ok);
-	//~ this->granularite2=QInputDialog::getDouble(this,"param","granularite",0.01,0.01,0.1,4, &ok);
-		   };
+};
    
 void Opengl::addPoint(double x, double y, double r, double g, double b){
     glBegin(GL_POINTS);
@@ -145,11 +136,6 @@ void Opengl::resizeGL(int width, int height)
     if(height == 0)
         height = 1;
     glViewport(0, 0, width, height);
-	
-    //glMatrixMode(GL_PROJECTION);
-    //glLoadIdentity();
-    //~ gluPerspective(45.0f, (GLfloat)width/(GLfloat)height, 0.1f, 100.0f);
-    //glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
 
@@ -169,9 +155,7 @@ void Opengl::paintGL()
     	dessiner_J(c);
 	}
 	
-    //
-	
-	
+	//largeur total des bouttons
 	if(largeur > 740){
 		this->setFixedSize(largeur,hauteur+80);
 	}
@@ -214,19 +198,6 @@ void Opengl::dessiner_J(std::complex<double> c)
 		}		
 	}
 };
-
-//~ void Opengl::ouvrirDialogue(){
-	//~ bool ok=false;
-	//~ this->cadre.x_min=QInputDialog::getDouble(this,"param","cadre xmin",0,-5,5,4, &ok);
-	//~ this->cadre.x_max=QInputDialog::getDouble(this,"param","cadre xmax",0,-5,5,4, &ok);
-	//~ this->cadre.y_min=QInputDialog::getDouble(this,"param","cadre ymin",0,-5,5,4, &ok);
-	//~ this->cadre.y_max=QInputDialog::getDouble(this,"param","cadre ymax",0,-5,5,4, &ok);
-	//~ this->z_max=QInputDialog::getDouble(this,"param","cadre zmax",0,-5,5,4, &ok);
-	//~ this->granularite=QInputDialog::getDouble(this,"param","granularite",0.01,0.01,0.1,4, &ok);
-	
-	
-//~ };
-
 
 void Opengl::changerXmin(double n){
 	if(n != 0) {
@@ -355,6 +326,8 @@ void Opengl::hautFunc(){
 	this->cadre.y_min += valeurPas;
 	this->updateGL();
 }
+
+
 
 void Opengl::droitFunc(){
 	this->updateGL();
