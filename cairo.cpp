@@ -14,7 +14,7 @@ void Cairo::dessiner_M(){
 	int y;
 	int imagex=(this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
 	int imagey=(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
-	surface = cairo_svg_surface_create("svgfile.svg", imagex, imagey);	
+	surface = cairo_svg_surface_create("fractal.svg", imagex, imagey);	
 	cr = cairo_create(surface);
 	cairo_set_source_rgb(cr, 0, 0, 0);
 	for(x=0; x<imagex; x+=1){
@@ -44,7 +44,7 @@ void Cairo::dessiner_J(std::complex<double> c){
 	int y;
 	int imagex=(this->getCadreXmax()-this->getCadreXmin())/this->getGranularite();
 	int imagey=(this->getCadreYmax()-this->getCadreYmin())/this->getGranularite();
-	surface = cairo_svg_surface_create("svgfile.svg", imagex, imagey);	
+	surface = cairo_svg_surface_create("fractal.svg", imagex, imagey);	
 	cr = cairo_create(surface);
 	cairo_set_source_rgb(cr, 0, 0, 0);
     for(x=0; x<imagex; x+=1){
