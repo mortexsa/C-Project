@@ -50,7 +50,7 @@ public:
     //! \brief destructeur de la class Point
     ~Point(); 
     
-     //! \brief accesseur de l'abcisse
+    //! \brief accesseur de l'abcisse
     double getPx() const;
     
     //! \brief accesseur de l'ordonne

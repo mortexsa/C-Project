@@ -4,10 +4,6 @@
 #include "Point.hh"
 
 
-#define HAUTEUR 600
-#define LARGEUR 600
-
-
 /*!
  *  \file Dessin.hh
  * \brief class abstraite de dessin
@@ -128,7 +124,7 @@ public:
     virtual void dessiner_M()=0;
     
     
-    //§ \brief methode virtuel pur pour le dessin de la fractal de Julia et Fatou
+    //! \brief methode virtuel pur pour le dessin de la fractal de Julia et Fatou
     /*!
      * la methode est définie dans les sous-classes Cairo et Opengl
      */
