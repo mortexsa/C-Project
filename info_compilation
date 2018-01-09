@@ -1,0 +1,13 @@
+Pour compiler, utiliser la commande make.
+le Makefile a été généré grâce à qmake avec les commandes suivantes :
+qmake -project
+puis rajout des lignes suivante dans C-project.pro :
+QT += opengl
+QT += widgets
+CONFIG +=link_pkgconfig
+PKGCONFIG += gtk+-2.0
+LIBS = -lglut -lGLU
+puis 
+qmake
+
+
