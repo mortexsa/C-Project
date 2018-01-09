@@ -83,16 +83,22 @@ public:
     //! \brief affiche la fractale
     void paintGL();
 
-    //! \brief methode virtuel pur pour le dessin de la fractal de Julia et Fatou
+   //! \brief dessin de la fractale de julia et Fatou qui sera afficher sur l'interface Qt
     /*!
-     * la methode est définie dans les sous-classes Cairo et Opengl
+     la fonction utilise les attributs de la classe et du complex c pour dessiner la fractale
+     * Pour cela la fonction crée des points colorés, calcule la taille de l'image en fonction du cadre et de la granularité puis calcule la couleur de chaque 
+     * pixel en fonction de ses coordonnées grâce à la fonction algoJuliaFatou héritée de la classe Dessin.     
+     \c dessiner_J()
+     \param c complex utilisé pour dessiner la fractal de julia et Fatou
      */
     void dessiner_J(std::complex<double> c);
 
-    //! \brief methode virtuel pur pour le dessin de la fractal de Mandelbrot
-    /*!
-     * la methode est définie dans les sous-classes Cairo et Opengl
-     */
+    //! \brief dessin de la fractale de mandelbrot qui sera afficher sur l'interface Qt
+        /*! 
+          la fonction utilise les attributs de la classe pour dessiner la fractale
+          * Pour cela la fonction crée des points colorés, calcule la taille de l'image en fonction du cadre et de la granularité puis calcule la couleur de chaque 
+         * pixel en fonction de ses coordonnées grâce à la fonction algoMandelbrot héritée de la classe Dessin. 
+        */
     void dessiner_M();
 
     //! \brief fonction pour les touches clavier : ici la touche echape pour quitter la fenetre
